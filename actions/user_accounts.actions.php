@@ -30,3 +30,17 @@ header("location: ../register.php?msg=register-successful");
 exit();
 
 I}
+
+else if (@$_POST["login"]){
+    $validate = $user_accounts->validateUser($_POST["username"],
+    $_POST["password"]);
+    if ($validate == true) {
+    header("location:dashboard.php");
+    exit();
+        } else {
+        header("index.php?msg-error-login");
+        exit();
+    
+        }
+    }
+    
