@@ -135,14 +135,15 @@ function delete($id)
                 $sql_username = "SELECT * FROM user_accounts WHERE username = '".$username."' AND user_password = '".md5($row_set->user_salt ."". $password)."'";
                 $qry_username = mysqli_query($this->connDb, $sql_username) or die (mysqli_error($this->connDb)); 
                 $row_username = mysqli_fetch_object($qry_username);
+                
                 if ($qry_username)
                 {
-                session_start();
-                $_SESSION["id"] = $row_username->id;
-                $_SESSION["username"] = $row_username->username;
-                $_SESSION["user_display_name"] = $row_username->user_display_name;
+                    session_start();
+                    $_SESSION["id"] = $row_username->id;
+                    $_SESSION["username"] = $row_username->username;
+                    $_SESSION["user_display_name"] = $row_username->user_display_name;
 
-                $return = true;
+                    $return = true;
                 }
             }
             return $return;

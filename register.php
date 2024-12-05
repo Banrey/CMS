@@ -1,7 +1,7 @@
 <html>
 <head>
 <title></title>
-<link rel="stylesheet" type="text/css" href="styles.css" />
+<link rel="stylesheet" type="text/css" href="assets/style.css" />
 </head>
 <body>
 <div id="wrapper">
@@ -10,9 +10,9 @@
 <div class="wrapper">
 <div class="left-sidebar">
 <div class="login-box">
-<form method="post" action="actions/user_accounts.php"> <label>Username</label>
+<form method="post" action="actions/user_accounts.actions.php"> <label>Username</label>
 <input type="text" name="username" class="form-control" placeholder="Username..."> <label>Password</label>
-<input type="password" name="password" class="form-control" placeholder="Password..."> <input type="submit" value="Login" name="submit">
+<input type="password" name="password" class="form-control" placeholder="Password..."> <input type="submit" value="submit" name="login">
 <input type="reset" value="Rest">
 </form>
 <a href="register.php">Register</a> </div>

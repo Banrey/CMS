@@ -2,6 +2,8 @@
 include("../includes.php");
 $user_accounts = new User_accounts($connDb);
 
+
+
 if (@$_POST["register"]) {
     if (empty($_POST["username"]) ||
         empty($_POST["user_display_name"]) || 
@@ -11,7 +13,7 @@ if (@$_POST["register"]) {
         header("location: ../register.php?msg-required-fields");
         exit();
     } else {
-        $count = $user_accounts->checkƐmail($_POST["user_email_address"]); 
+        $count = $user_accounts->checkEmail($_POST["user_email_address"]); 
         if ($count > 0) {
             header("location: ../register.php?nsg-duplicate-email");
             exit();
@@ -24,23 +26,32 @@ if (@$_POST["register"]) {
     $user_accounts->user_display_name = $_POST["user_display_name"];
     $user_accounts->user_email_address = $_POST["user_email_address"];
     $user_accounts->user_salt = $salt;
-    $user_accounts->user_password = md5($salt ."".$_POST["user_password"]);
+    $user_accounts->user_password = md5($salt ."". $_POST["user_password"]);
     $user_accounts->save();
     
     header("location: ../register.php?msg=register-successful");
     exit();
-}
+    }
 }
 
 else if (@$_POST["login"]){
-    $validate = $user_accounts->validateUser($_POST["username"], $_POST["password"]);
+    
+    $validate = $user_accounts->validateUser($_POST["username"],$_POST["password"]);
+    
     if ($validate == true) {
-        header("location:dashboard.php");
+       
+        
+        header("location:../dashboard.php");
         exit();
     } else {
-        header("index.php?msg-error-login");
+        echo "hi";
+        
+        header("../index.php?msg-error-login");
         exit();
-    
         }
     }
+
+    
+
+
     
