@@ -93,14 +93,28 @@ return $row;
 }
 
 
-function delete($id)
-{
-    try {
-        $sql = "DELETE FROM posts WHERE id = '".$id."'";
-        mysqli_query($this->connDb, $sql) or die (mysqli_error($this->connDb));
+    function delete($id)
+    {
+        try {
+            $sql = "DELETE FROM posts WHERE id = '".$id."'";
+            mysqli_query($this->connDb, $sql) or die (mysqli_error($this->connDb));
 
-        return $result;
-    } catch (\Throwable $ex) {
-        echo $ex->getMessage();
+            return $result;
+        } catch (\Throwable $ex) {
+            echo $ex->getMessage();
+        }
+    }
+    
+    function myPosts($id)
+    {
+        try {
+            $sql = "SELECT * FROM posts WHERE post_author_id = '".$id."'";
+            $result = mysqli_query($this->connDb, $sql) or die (mysqli_error($this->connDb));
+            $result = mysql_fetch_object($result);
+
+            return $result;
+        } catch (\Throwable $ex) {
+            echo $ex->getMessage();
+        }
     }
 }
