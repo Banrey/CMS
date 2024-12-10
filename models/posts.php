@@ -29,16 +29,15 @@ class Posts
             post_content,
             post_date,
             post_excerpt,
-            }
             post_author_id)
         VALUES (
-            ".$this->post_type_id."
-            *".$this->post_status_id."
-            ".$this->post_title.
-            ".$this->post_content.
+            '".$this->post_type_id."',
+            '".$this->post_status_id."',
+            '".$this->post_title."',
+            '".$this->post_content."',
             '".$this->post_date."',
-            ".$this->post_excerpt."
-            ".$this->post_author_id."')";
+            '".$this->post_excerpt."',
+            '".$this->post_author_id."')";
 
         }
         
@@ -66,15 +65,15 @@ mysqli_query($this->connDb, $sql) or die (mysqli_error($this->connDb));
         }
 }
 
-function getAll($id)
+function getAll()
 {
     try {
-        $sql = "SELECT FROM posts";
+        $sql = "SELECT * FROM posts";
         $result = mysqli_query($this->connDb, $sql) or die (mysqli_error($this->connDb));
         $result = mysqli_fetch_object($result);
 
         return $result;
-    } catch (\Throwable $ex) {
+    } catch (Exception $ex) {
         echo $ex->getMessage();
     }
 }
@@ -87,8 +86,7 @@ function getSingle($id)
 
 return $row;
 
-        return $result;
-    } catch (\Throwable $ex) {
+    } catch (Exception $ex) {
         echo $ex->getMessage();
     }
 }
@@ -100,8 +98,8 @@ return $row;
             $sql = "DELETE FROM posts WHERE id = '".$id."'";
             mysqli_query($this->connDb, $sql) or die (mysqli_error($this->connDb));
 
-            return $result;
-        } catch (\Throwable $ex) {
+
+        } catch (Exception $ex) {
             echo $ex->getMessage();
         }
     }
@@ -114,7 +112,7 @@ return $row;
             $result = mysql_fetch_object($result);
 
             return $result;
-        } catch (\Throwable $ex) {
+        } catch (Exception $ex) {
             echo $ex->getMessage();
         }
     }

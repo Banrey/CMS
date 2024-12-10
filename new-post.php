@@ -1,6 +1,6 @@
 <?php
 include("includes.php");
-$post = new Post($connDb);
+$post = new Posts($connDb);
 session_start();
 if (empty($_SESSION["id"])) {
     header("location: index.php");
@@ -11,7 +11,7 @@ if (empty($_SESSION["id"])) {
 <html>
     <head>
         <title></title>
-        <link rel="stylesheet" type="text/css" href="assets/styles.css" />
+        <link rel="stylesheet" type="text/css" href="assets/style.css" />
     </head>
     <body>
         <div id="wrapper">
@@ -40,7 +40,7 @@ if (empty($_SESSION["id"])) {
                         <?php if (!empty($_GET["post_id"])): ?>
                         <input type="hidden" name="id" value="<?php echo $_GET["post_id"] ?>">
                         <?php endif; ?>
-                        <input type="submit" value="Register" name="register">
+                        <input type="submit" value="Post" name="post">
                         <input type="reset" value="Reset">
                     </form>           
                 </div>

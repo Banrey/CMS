@@ -15,17 +15,13 @@ else
 $posts->id = $_POST["id"];
 $posts->post_type_id = $_POST["post_type_id"]; 
 $posts->post_status_id = $_POST["post_status_id"];
-$posts->post_title $_POST["post_title"];
+$posts->post_title = $_POST["post_title"];
 $posts->post_content= $_POST["post_content"];
-$posts->post_date date("Y-m-d");
-=
-$posts->post_excerpt
-$posts->post_author_id
+$posts->post_date = date("Y-m-d");
+$posts->post_excerpt = $_POST["post_excerpt"];
+$posts->post_author_id = $_POST["post_author_id"];
 $posts->save();
-=
-$_POST["post_excerpt"];
-=
-$_POST["post_author_id"];
+
 header("location: ../dashboard.php?msg-save-successful");
 exit();
 }

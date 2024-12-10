@@ -4,7 +4,10 @@ $user_accounts = new User_accounts($connDb);
 
 
 
+
 if (@$_POST["register"]) {
+    
+    echo "hi1r";
     if (empty($_POST["username"]) ||
         empty($_POST["user_display_name"]) || 
         empty($_POST["user_email_address"]) ||
@@ -36,15 +39,18 @@ if (@$_POST["register"]) {
 
 else if (@$_POST["login"]){
     
+    echo "hi1l";
+    
     $validate = $user_accounts->validateUser($_POST["username"],$_POST["password"]);
     
     if ($validate == true) {
        
+        echo "hi2l";
         
         header("location:../dashboard.php");
         exit();
     } else {
-        echo "hi";
+        echo "hi3l";
         
         header("../index.php?msg-error-login");
         exit();

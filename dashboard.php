@@ -1,6 +1,6 @@
 <?php
 include("includes.php");
-$post = new Post($connDb);
+$post = new Posts($connDb);
 session_start();
 if (empty($_SESSION["id"])) {
     header("location: index.php");
@@ -11,7 +11,7 @@ if (empty($_SESSION["id"])) {
 <html>
     <head>
         <title></title>
-        <link rel="stylesheet" type="text/css" href="assets/styles.css" />
+        <link rel="stylesheet" type="text/css" href="assets/style.css" />
     </head>
     <body>
         <div id="wrapper">
@@ -34,6 +34,9 @@ if (empty($_SESSION["id"])) {
                                 <th width="20%">Action</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            <?php $post->getAll() ?> hi
+                        </tbody>
                     </table>
                 </div>
             </div>

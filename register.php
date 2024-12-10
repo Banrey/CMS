@@ -33,7 +33,7 @@
 <input type="text" name="user_display_name" class="form-control" placeholder="Display name..."> <label class="required">Email address</label>
 <input type="text" name="user_email_address" class="form-control" placeholder="Email address..."> <label class="required">Password</label>
 <input type="password" name="user_password" class="form-control" placeholder="Password..."> <input type="submit" value="Register" name="register">
-<input type="reset" value="Rest">
+<input type="reset" value="Reset">
 </form>
 </div>
 </div>
