@@ -55,14 +55,15 @@ $sql = "UPDATE posts SET
             WHERE
             id = '".$this->id."'";
 
-mysqli_query($this->connDb, $sql) or die (mysqli_error($this->connDb));
 }
-catch(Exception $ex)
 
+mysqli_query($this->connDb, $sql) or die (mysqli_error($this->connDb));
+
+    }
+    catch(Exception $ex)
         {
         echo $ex->getMessage();
         }
-    }
 }
 
 function getAll($id)
@@ -80,7 +81,7 @@ function getAll($id)
 function getSingle($id)
 {
     try {
-        $sql = "SELECT * FROM posts WHERE id = '".$id."'"
+        $sql = "SELECT * FROM posts WHERE id = '".$id."'";
         $result = mysqli_query($this->connDb, $sql) or die (mysqli_error($this->connDb));
         $row = mysqli_fetch_row($result);
 

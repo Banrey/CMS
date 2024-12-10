@@ -10,13 +10,13 @@ private $connDb;
 #
 function __construct($connDb)
 {
+    $this->connDb = $connDb;
 }
-$this->connDb = $connDb;
 function save()
 {
     try
     {
-        $sql =
+        $sql = "";
         if (empty($this->id))
         {
             $sql = "INSERT INTO comments (post_id,
@@ -24,10 +24,10 @@ function save()
             comment_content,
             comment_date)
             VALUES
-            ('"$this->post_id."',
-                "$this->user_id."',
-                "$this->comment_content."',
-                "$this->comment_date."')";
+            ('".$this->post_id."',
+                ".$this->user_id."',
+                ".$this->comment_content."',
+                ".$this->comment_date."')";
         } 
         else 
         {
@@ -37,8 +37,9 @@ function save()
                         comment_content = '".$this->comment_content."',
                         comment_date = '".$this->comment_date."',
                         WHERE
-                        id = '".$this->id."')"
+                        id = '".$this->id."')";
         }
+
         mysqli_query($this->connDb, $sql) or die (mysqli_error($this->connDb));
     }   
     catch(Exception $ex){
@@ -47,21 +48,25 @@ function save()
 }
     function getAll()
     {
-        $sql = "SELECT * FROM comments";
-        $result = mysqli_query($this->connDb, $sql) or die (mysqli_error($this->connDb));
-        $result = mysqli_fetch_object($result);
 
-        return $result;
-    }
-    catch(Exception $ex){
-        echo $ex->getMessage();
+        try {
+            $sql = "SELECT * FROM comments";
+            $result = mysqli_query($this->connDb, $sql) or die (mysqli_error($this->connDb));
+            $result = mysqli_fetch_object($result);
+    
+            return $result;
+        } 
+        catch(Exception $ex){
+            echo $ex->getMessage();
+        }
+        
     }
 
     
     function getSingle($id)
     {
         try {
-            $sql = "SELECT * FROM comments WHERE id = '".$id."'"
+            $sql = "SELECT * FROM comments WHERE id = '".$id."'";
             $result = mysqli_query($this->connDb, $sql) or die (mysqli_error($this->connDb));
             $row = mysqli_fetch_row($result);
 
