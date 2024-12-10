@@ -1,3 +1,8 @@
+<?php
+include("includes.php");
+$post = new Posts($connDb);
+?>
+
 <html>
     <head>
         <title></title>
@@ -25,6 +30,11 @@
 <div class="container">
     <h3>Welcome</h3>
     <a href="index.php">Home</a> / <a href="register.php">Register</a>
+    <table>
+        <tbody>
+            <?php $post->myPosts(); ?>
+        </tbody>
+    </table>
 </div>
 </div>
 </div>

@@ -35,7 +35,7 @@ if (empty($_SESSION["id"])) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $post->getAll() ?> hi
+                            <?php $post->getAll(); ?> 
                         </tbody>
                     </table>
                 </div>
